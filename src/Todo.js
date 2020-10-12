@@ -3,6 +3,7 @@ import './App.css'
 import Category from './Containers/Category'
 import TaskContainer from './Containers/TaskContainer'
 
+
 class Todo extends React.Component {
 
   state = {
@@ -14,7 +15,6 @@ class Todo extends React.Component {
   componentDidMount() {
     this.mounted = true 
     if (this.mounted === true) {
-      this.fetchTasks() 
       let mounted = true
     if (mounted === true) {
 
@@ -25,7 +25,7 @@ class Todo extends React.Component {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(response => response.json())
-        .then(data => this.setState({user: data.user}), ()=> this.props.history.push("/"))
+        .then(data => this.setState({user: data.user, tasks: data.user.tasks}), ()=> this.props.history.push("/"))
       } else {
         this.props.history.push("/login")
       }
@@ -37,12 +37,6 @@ class Todo extends React.Component {
     this.mounted = false 
   }
 
-
-  fetchTasks = () => {
-    fetch('http://localhost:3000/tasks')
-    .then(response => response.json())
-    .then(tasks => this.setState({ tasks: tasks }))
-  }
 
   filterTasks = () => {
     if (this.state.selectedCategory === 'All') {
@@ -74,7 +68,6 @@ class Todo extends React.Component {
 
 
   deleteTask = (obj) => {
-    console.log(obj)
     let newArr = this.state.tasks.filter(task => !(task.text === obj.text && task.category === obj.category))
     this.setState({tasks: newArr})
     fetch(`http://localhost:3000/tasks/${obj.id}`, {
@@ -94,7 +87,8 @@ class Todo extends React.Component {
     return (
       
       <div className="App">
-        <h2>My tasks</h2> 
+        <br></br>
+        
         <Category user={this.state.user} selectedState ={this.state.selectedCategory} selectedCategory ={this.selectedCategory} />    
         <TaskContainer user={this.state.user} addTask={this.addTask}  deleteTask={this.deleteTask} category={this.state.selectedCategory}  tasks={this.filterTasks()} /> 
     </div> 

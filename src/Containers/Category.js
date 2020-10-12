@@ -9,18 +9,24 @@ class Category extends React.Component {
     componentDidMount() {
         this.mounted = true 
         if (this.mounted === true) {
-            this.fetchCategories()
+            this.fetchUser()
         }
+    }
+
+    fetchUser = () => {
+        let token = localStorage.getItem("token")
+        fetch('http://localhost:3000/api/v1/profile', {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.setState({categories: data.user.categories.sort((a, b) => a.id - b.id)})
+        })
     }
 
     componentWillUnmount() {
         this.mounted = false 
-    }
-    
-    fetchCategories = () => {
-        fetch('http://localhost:3000/categories')
-        .then(response => response.json())
-        .then(categories => this.setState({ categories: categories}))
     }
 
     render() {

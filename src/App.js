@@ -4,16 +4,15 @@ import Signup from './Components/Signup'
 import Todo from './Todo'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Components/Login'
-import About from './Components/About'
-import Please from './Components/Please'
 import CategoryForm from './Components/CategoryForm'
-import Navbar from './Components/Navbar'
+import Navbar from './Components/NavBar'
 
 
 class App extends React.Component {
 
   state= {
-    user: undefined
+    user: undefined,
+    error: ''
   }
 
   componentDidMount() {
@@ -48,7 +47,14 @@ componentWillUnmount() {
       body: JSON.stringify({ user: userObj })
     })
     .then(response => response.json())
-    .then(data => this.setState({user: data.user}, ()=> this.props.history.push("/login")))
+    .then(data =>{
+      if(data.error === 'failed to create user') {
+        this.setState({error: 'Please enter a different username' })
+      } else {
+        this.setState({error: '' })
+        this.props.history.push("/login")
+      }
+    })
   }
 
   loginHandler = (userObj) => {
@@ -78,21 +84,23 @@ componentWillUnmount() {
   render() {    
     return (
       <Switch>
-        <React.Fragment>
-          <Navbar clickHandler={this.logoutHandler} user={this.state.user} />
-          { this.state.user !== undefined && 
-          <Route exact path="/" component={Todo} />
-          }
-          { this.state.user === undefined && 
-          <Route exact path="/" component={Please} />
-          }
-          <Route exact path='/signup' render={() => <Signup submitHandler={this.signupHandler}/>} />
-          <Route exact path='/login' render={() => <Login submitHandler={this.loginHandler}/>} />
-          <Route exact path='/about' render={() => <About user={this.state.user} />} />
-          <Route exact path='/edit' render={() => <CategoryForm />} />
-
-        </React.Fragment>
-      </Switch>
+        {this.state.user 
+        ?
+        <>
+        <br></br>
+        <Navbar clickHandler={this.logoutHandler} user={this.state.user} />
+        <br></br>
+        
+        <Route exact path="/" component={Todo} />
+        <Route exact path='/edit' render={() => <CategoryForm />} />
+        </>
+        :
+        <>
+        <Route exact path='/signup' render={() => <Signup error ={this.state.error} submitHandler={this.signupHandler}/>} />
+        <Route exact path='/login' render={() => <Login submitHandler={this.loginHandler}/>} />
+        </>
+      }
+        </Switch>
     )
   }
 }

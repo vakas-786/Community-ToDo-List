@@ -29,7 +29,7 @@ h5 {
 }
 
 .categories > button.selected {
-  background: pink;
+  background: rgb(215, 255, 192);
 }
 
 .categories > button:hover {
@@ -168,6 +168,50 @@ button.toggle.on:before {
 
 button.toggle:focus {
   outline: none;
+}
+
+.navbar {
+  margin: 20px;
+    position: absolute;
+    padding: 5px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.login-form {
+  width: 30%;
+  max-width: 333 px;
+  padding: 15 px;
+  margin: auto;
+  height: 150%
+}
+
+.buttons-form {
+  margin: 5px;
+    position: absolute;
+    justify-content: space-around;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.logout{
+  padding: 5px;
+  margin-left: -15%;
+}
+
+.category-form{
+  margin: auto;
+  width: 100%;
+  max-width: 333px;
+}
+
+.category-span {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(2, 16, 139);
 }
 
 @keyframes grow {

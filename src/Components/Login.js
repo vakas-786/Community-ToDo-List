@@ -1,7 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { Form, FormGroup, Input, Button  } from 'reactstrap'
+import '../App.css'
 
- 
+
 class Login extends React.Component {
 
   state = {
@@ -21,27 +23,29 @@ submitHandler = (e) => {
   render() {
    
     return (
-      <React.Fragment>
+      <>
+      <br></br>
 
-      <form onSubmit={this.submitHandler} >
-        <h1>Login</h1>
-        <div>
-          <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
-          <label htmlFor="username">Username</label>
-        </div>
-        <div>
-          <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-          <label htmlFor="password">Password</label>
-        </div>
-        <input type="submit" value="Login" />
-      </form>
+      <Form className="login-form" onSubmit={this.submitHandler} >
+        <h2 className='text-center'>Community ToDo List</h2>
+        <FormGroup>
+          <Input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
+        </FormGroup>
+        <FormGroup>
+          <Input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
+        </FormGroup>
+        <br></br>
+        <div className='buttons-form'>
+        <Button color='primary' type="submit" value="Login" >Login</Button>
       <NavLink to="/signup">
-      <button >
+      <Button color='warning' >
         Register
-      </button>
+      </Button>
       </NavLink>
+        </div>
+      </Form>
       
-      </React.Fragment>
+      </>
     )
   }
 }

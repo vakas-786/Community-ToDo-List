@@ -1,4 +1,6 @@
 import React from 'react'
+import { Form, FormGroup, Input, Button, Label  } from 'reactstrap'
+
  
 class CategoryForm extends React.Component {
 
@@ -6,6 +8,7 @@ class CategoryForm extends React.Component {
         categories: [],
         id: '',
         name: '',
+        user: [],
         task: []
     }
 
@@ -16,9 +19,11 @@ class CategoryForm extends React.Component {
     editCategory = (obj) => { 
         let id = (obj.id) 
         let name = obj.name
+        let user = obj.user
         this.setState({
             id: id,
-             name: name
+             name: name,
+             user: user
             })
     }
 
@@ -39,10 +44,17 @@ class CategoryForm extends React.Component {
     }
 
     fetchCategories = () => {
-        fetch('http://localhost:3000/categories')
+        let token = localStorage.getItem("token")
+        fetch('http://localhost:3000/api/v1/profile', {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then(response => response.json())
-        .then(categories => this.setState({ categories: categories}))
+        .then(data => {
+            this.setState({categories: data.user.categories.sort((a, b) => a.id - b.id)})
+        })
     }
+
 
 
     componentDidMount() {
@@ -50,22 +62,36 @@ class CategoryForm extends React.Component {
     }
 
     categoryMap = () => {
-        return this.state.categories.map((category) => <span key={category.id} value={category.name} onClick={()=> this.editCategory(category)} name="category">{category.name}</span> ).slice(1,5)
+        return this.state.categories.map((category) => <span className='category-span' key={category.id} value={category.name} onClick={()=> this.editCategory(category)} name="category">{category.name}</span> ).slice(1,5)
     }
 
     render() {
        
     return( 
-        <React.Fragment>
-      <form onSubmit={this.submitHandler}>
-        <input value={this.state.name} onChange = {(this.changeHandler)} placeholder="Select a Category to Edit" name="category" /> 
-        <input type="submit"/>
-    </form>
-    <div>
-        {this.categoryMap()}
+        <>
 
+        <br></br>
+        <br></br>
+        <br></br>
+      
+    <div className='text-center'>
+        {this.categoryMap()}
     </div>
-        </React.Fragment>
+
+    <br></br>
+    <Form className='category-form' onSubmit={this.submitHandler}>
+        <FormGroup>
+        <Input value={this.state.name} onChange = {(this.changeHandler)} placeholder="Selected Category" name="category" /> 
+        <div className='text-center'>
+        <Label style={{color: 'rgb(2, 16, 139)'}}>Click on a Category to Begin Editing</Label>
+        </div>
+        </FormGroup>
+        <div className='text-center'>
+            <br></br>
+        <Button  type="submit">Submit Changes</Button>
+        </div>
+    </Form>
+        </>
 
     )
   }

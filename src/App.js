@@ -70,7 +70,9 @@ componentWillUnmount() {
     .then(data => {
       if (data.jwt !== undefined) {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, ()=> this.props.history.push("/"))
+        this.setState({user: data.user, error: ''}, ()=> this.props.history.push("/"))
+      }else if(data.message === 'Invalid username or password'){
+        this.setState({error: 'Invalid username or password'})
       }
     })
   }
@@ -97,7 +99,7 @@ componentWillUnmount() {
         :
         <>
         <Route exact path='/signup' render={() => <Signup error ={this.state.error} submitHandler={this.signupHandler}/>} />
-        <Route exact path='/login' render={() => <Login submitHandler={this.loginHandler}/>} />
+        <Route exact path='/login' render={() => <Login error={this.state.error} submitHandler={this.loginHandler}/>} />
         </>
       }
         </Switch>

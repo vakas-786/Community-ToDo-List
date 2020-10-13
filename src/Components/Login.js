@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import { Form, FormGroup, Input, Button  } from 'reactstrap'
+import { Form, FormGroup, Input, Button, FormFeedback  } from 'reactstrap'
 import '../App.css'
 
 
@@ -29,10 +29,12 @@ submitHandler = (e) => {
       <Form className="login-form" onSubmit={this.submitHandler} >
         <h2 className='text-center'>Community ToDo List</h2>
         <FormGroup>
-          <Input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
+          {this.props.error === 'Invalid username or password' ? <><Input invalid type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} /> <FormFeedback>Incorrect Username or Password.</FormFeedback></>:
+          <><Input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} /></> }
         </FormGroup>
         <FormGroup>
-          <Input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
+        {this.props.error === 'Invalid username or password' ? <><Input invalid type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} /> <FormFeedback>Incorrect Username or Password.</FormFeedback></>:
+        <Input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />}
         </FormGroup>
         <br></br>
         <div className='buttons-form'>

@@ -5,7 +5,7 @@ import Todo from './Todo'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Components/Login'
 import CategoryForm from './Components/CategoryForm'
-import Navbar from './Components/NavBar'
+import Header from './Components/Header'
 
 
 class App extends React.Component {
@@ -90,7 +90,7 @@ componentWillUnmount() {
         ?
         <>
         <br></br>
-        <Navbar clickHandler={this.logoutHandler} user={this.state.user} />
+        <Header clickHandler={this.logoutHandler} user={this.state.user} />
         <br></br>
         
         <Route exact path="/" component={Todo} />

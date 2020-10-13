@@ -3,7 +3,7 @@ import { NavLink as RRNavLink } from 'react-router-dom'
 import { Navbar, Nav, NavItem, NavLink, Badge} from 'reactstrap'
 import '../App.css' 
 
-  class NavBar extends React.Component {
+  class Header extends React.Component {
     render() {
       return (
         <div>
@@ -33,4 +33,4 @@ import '../App.css'
     }
   }
    
-  export default NavBar
+  export default Header

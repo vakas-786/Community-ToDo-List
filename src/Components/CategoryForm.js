@@ -39,13 +39,13 @@ class CategoryForm extends React.Component {
             },
             body: JSON.stringify({name: name})
         }
-        fetch(`http://localhost:3000/categories/${id}`, options)
+        fetch(`https://community-to-do-api.herokuapp.com/categories/${id}`, options)
         .then(()=> this.fetchCategories())
     }
 
     fetchCategories = () => {
         let token = localStorage.getItem("token")
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch('https://community-to-do-api.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })

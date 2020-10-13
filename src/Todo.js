@@ -20,7 +20,7 @@ class Todo extends React.Component {
 
       let token = localStorage.getItem("token")
       if (token !== null || undefined) {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch('https://community-to-do-api.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -52,7 +52,7 @@ class Todo extends React.Component {
   }
 
   addTask = (taskObj) => {
-    fetch('http://localhost:3000/tasks', {
+    fetch('https://community-to-do-api.herokuapp.com/tasks', {
 
       method: 'POST',
       headers: {
@@ -70,7 +70,7 @@ class Todo extends React.Component {
   deleteTask = (obj) => {
     let newArr = this.state.tasks.filter(task => !(task.text === obj.text && task.category === obj.category))
     this.setState({tasks: newArr})
-    fetch(`http://localhost:3000/tasks/${obj.id}`, {
+    fetch(`https://community-to-do-api.herokuapp.com/tasks/${obj.id}`, {
 
       method: 'DELETE',
       headers: {

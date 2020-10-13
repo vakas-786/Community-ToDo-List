@@ -21,7 +21,7 @@ class App extends React.Component {
 
       let token = localStorage.getItem("token")
       if (token !== null || undefined) {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch('https://community-to-do-api.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -38,7 +38,7 @@ componentWillUnmount() {
 }
 
   signupHandler = (userObj) => {
-    fetch('http://localhost:3000/api/v1/users', {
+    fetch('https://community-to-do-api.herokuapp.com/api/v1/users', {
       method: 'POST',
       headers: {
         accepts: "application/json", 
@@ -58,7 +58,7 @@ componentWillUnmount() {
   }
 
   loginHandler = (userObj) => {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://community-to-do-api.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         accepts: 'application/json',

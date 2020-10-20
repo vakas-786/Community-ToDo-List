@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   
-  <h3 align="center">Community ToDo List</h3>
+  <h1 align="center">Community ToDo List</h1>
 
   <p align="center">
    A customizable task lister. 

@@ -4,7 +4,7 @@
   <h3 align="center">Community ToDo List</h3>
 
   <p align="center">
-    A Task lister built with a React front end and a rails backend. Users can sign up to have access to their own, unique task lists. Users are also able to customize the available categories on their task lists. 
+   A customizable task lister. 
   </p>
 </p>
 

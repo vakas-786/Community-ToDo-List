@@ -21,6 +21,8 @@ Insert image here of task lister.
 * React.js
 * Bootstrap
 * Ruby on Rails 
+* PostgreSQL
+* ActiveRecord
 
 
 ## Usage

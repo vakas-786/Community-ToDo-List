@@ -23,6 +23,7 @@ Insert image here of task lister.
 * Ruby on Rails 
 * PostgreSQL
 * ActiveRecord
+* JWT Auth
 
 
 ## Usage

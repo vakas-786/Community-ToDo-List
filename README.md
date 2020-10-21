@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Insert image here of task lister. 
 
 
 ### Built With
@@ -63,7 +63,7 @@ rails s
 
 1. Clone the repo
 ```sh
-git clone https://github.com/github_username/repo_name.git
+git clone https://github.com/vakas-786/Community-ToDo-List.git
 ```
 2. Install NPM packages
 ```sh

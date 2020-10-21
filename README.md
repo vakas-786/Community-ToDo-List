@@ -37,7 +37,6 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is app uses a rails backend. Clone the repository and follow the directions below to start the rails server. 
-* npm
 ```sh
 git clone https://github.com/vakas-786/ToDo-Backend.git
 ```

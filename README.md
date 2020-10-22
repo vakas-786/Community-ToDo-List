@@ -11,10 +11,12 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## User Stories
 
-Insert image here of task lister. 
-
+* As a User I want to create an account, so that I can have my own personal list of tasks and categories.
+* As a User I want to be able to delete my tasks  so I can clear away all completed tasks. 
+* As a User I want to organize my tasks by category  so I can easily find the task I'm looking for. 
+* As a User I want to update my categories so I can organize my tasks according to my current neeeds.  
 
 ### Built With
 
@@ -24,13 +26,6 @@ Insert image here of task lister.
 * PostgreSQL
 * ActiveRecord
 * JWT Auth
-
-
-## Usage
-
-Insert youtube link here 
-_For a live demo follow this link here [Documentation](https://example.com)_
-
 
 <!-- GETTING STARTED -->
 ## Getting Started

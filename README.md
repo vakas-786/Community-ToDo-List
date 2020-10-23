@@ -6,10 +6,17 @@
   <p align="center">
    A customizable task lister. 
   </p>
+  
 </p>
 
 
 
+
+## Login 
+Create an account or Login using these credentials 
+  * Username: test
+  * Password: password
+  
 <!-- ABOUT THE PROJECT -->
 ## User Stories
 

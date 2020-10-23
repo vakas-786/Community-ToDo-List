@@ -20,7 +20,7 @@ class Todo extends React.Component {
 
       let token = localStorage.getItem("token")
       if (token !== null || undefined) {
-        fetch('https://community-to-do-api.herokuapp.com/api/v1/profile', {
+        fetch('http://localhost:3000/api/v1/profile', {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -52,7 +52,7 @@ class Todo extends React.Component {
   }
 
   addTask = (taskObj) => {
-    fetch('https://community-to-do-api.herokuapp.com/tasks', {
+    fetch('http://localhost:3000/tasks', {
 
       method: 'POST',
       headers: {
@@ -65,12 +65,19 @@ class Todo extends React.Component {
     .then(tasks => this.setState( {tasks: [...this.state.tasks, tasks] }))
     }
   
+    // fetch('http://localhost:3000/tasks', {
+    //       method: "GET",
+    //       headers: { Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4fQ.NGxgYVcJ5Gv7zD3-btBf9YYLCA_rwsrxFKjAveqjdYk"}` },
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //use this to fetch transactions by giving it the token in the headers. The backend Index will fetch all the tasks for the current_user.
 
 
   deleteTask = (obj) => {
     let newArr = this.state.tasks.filter(task => !(task.text === obj.text && task.category === obj.category))
     this.setState({tasks: newArr})
-    fetch(`https://community-to-do-api.herokuapp.com/tasks/${obj.id}`, {
+    fetch(`http://localhost:3000/tasks/${obj.id}`, {
 
       method: 'DELETE',
       headers: {

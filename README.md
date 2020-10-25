@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a >
-    <img src="/thrift_demo.gif" width="800" height="550" >
+    <img src="/list_demo.png" width="800" height="550" >
   </a>
 <p align="center">
   

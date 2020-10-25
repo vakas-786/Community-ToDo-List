@@ -1,4 +1,9 @@
 <br />
+<br />
+<p align="center">
+  <a >
+    <img src="/thrift_demo.gif" width="800" height="550" >
+  </a>
 <p align="center">
   
   <h1 align="center">Community ToDo List</h1>
@@ -6,10 +11,17 @@
   <p align="center">
    A customizable task lister. 
   </p>
+  
 </p>
 
 
 
+
+## Login 
+Create an account or Login using these credentials 
+  * Username: test
+  * Password: password
+  
 <!-- ABOUT THE PROJECT -->
 ## User Stories
 

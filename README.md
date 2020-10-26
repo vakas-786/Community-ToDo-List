@@ -9,7 +9,7 @@
   <h1 align="center">Community ToDo List</h1>
 
   <p align="center">
-   A customizable task lister. 
+  A customizable task lister. The repo for the backend can be found <a href='https://github.com/vakas-786/ToDo-Backend'>here</a>
   <br>
   </br>
   <a href="https://community-to-do-react.herokuapp.com/">Live Demo</a>
@@ -30,12 +30,46 @@ Create an account or Login using these credentials
 <!-- ABOUT THE PROJECT -->
 ## User Stories
 
-* As a User I want to create an account, so that I can have my own personal list of tasks and categories.
-* As a User I want to be able to delete my tasks  so I can clear away all completed tasks. 
-* As a User I want to organize my tasks by category  so I can easily find the task I'm looking for. 
-* As a User I want to update my categories so I can organize my tasks according to my current neeeds.  
+* As a User I can create an account, so that I can have my own personal list of tasks and categories.
+* As a User I can delete my tasks  so I can clear all completed tasks. 
+* As a User I can organize my tasks by category  so I can easily find the task I'm looking for. 
+* As a User I can update my categories so that I can organize my tasks according to my current neeeds.  
 
-### Built With
+## Technical Challenges 
+When a user first signs in they will notice that they are presented with default categories to use for their task list. In order to ensure that each newly created user comes with these categories, I implemented a callback from the User controller to the User model to that added these categories. <br></br>
+<b>User Controller</b>
+```
+def create
+    @user = User.create(user_params)
+
+    if @user.valid?
+      User.giveCategory(@user)
+      @token = encode_token({ user_id: @user.id })
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    else
+      render json: { error: 'failed to create user' }, status: :not_acceptable
+    end
+  end
+  ```
+  <b>User Model</b>
+  ```sh
+  def self.giveCategory(user)
+        category_array = []
+
+        category_array.push(Category.create(name: 'All', user_id: user.id))
+        category_array.push(Category.create(name: 'Code', user_id: user.id))
+        category_array.push(Category.create(name: 'Food', user_id: user.id))
+        category_array.push(Category.create(name: 'Money', user_id: user.id))
+        category_array.push(Category.create(name: 'Misc', user_id: user.id))
+
+        user.categories = category_array
+    end 
+  ```
+ 
+  
+  
+
+## Built With
 
 * React.js
 * Bootstrap
@@ -44,7 +78,6 @@ Create an account or Login using these credentials
 * ActiveRecord
 * JWT Auth
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.

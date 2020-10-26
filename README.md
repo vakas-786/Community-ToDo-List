@@ -36,7 +36,7 @@ Create an account or Login using these credentials
 * As a User I can update my categories so that I can organize my tasks according to my current neeeds.  
 
 ## Technical Challenges 
-When a user first signs in they'll find that they're presented with default categories to use for their task list (All, Code, Food, Money, and Misc). To ensure that each newly created user comes with these categories, I implemented a callback from the User controller to the User model. The class method within the User model then created the default categories for the new User. <br></br>
+When a user first signs in they'll find that they're presented with default categories to use for their task list (All, Code, Food, Money, and Misc). To ensure that each newly created user comes with these categories, I implemented a callback from the User controller to the User model. The class method within the User model then created the default categories for the new User. <a href='https://github.com/vakas-786/ToDo-Backend'>Backend Repo</a> <br></br>
 <b>User Controller</b>
 ```
 def create

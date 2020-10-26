@@ -20,12 +20,19 @@
 </p>
 
 
-
-
 ## Login 
 Create an account or Login using these credentials 
   * Username: test
   * Password: password
+  
+## Built With
+
+* React.js
+* Bootstrap
+* Ruby on Rails 
+* PostgreSQL
+* ActiveRecord
+* JWT Auth
   
 <!-- ABOUT THE PROJECT -->
 ## User Stories
@@ -66,19 +73,8 @@ def create
     end 
   ```
  
-  
-  
 
-## Built With
-
-* React.js
-* Bootstrap
-* Ruby on Rails 
-* PostgreSQL
-* ActiveRecord
-* JWT Auth
-
-## Getting Started
+## Getting Started Locally
 
 To get a local copy up and running follow these simple steps.
 

@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a >
-    <img src="/list_demo.png" height= 40% width=70% >
+    <img src="/list_demo.png" height= 20% width=50% >
   </a>
 <p align="center">
   
